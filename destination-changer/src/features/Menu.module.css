@@ -1,0 +1,48 @@
+.menu {
+    position: relative;
+  }
+  
+  .menuButton {
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .icon {
+    display: block;
+    width: 3px;
+    border-radius: 100px;
+    height: 2px;
+    padding: 2px;
+    background-color: #888888;
+    margin-bottom: 4px;
+  }
+  .share
+  {
+    display: none;
+  }
+  .menuItems {
+    position: absolute;
+    bottom: 100%;
+    left: 10px;
+    background: #fff;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    display: none;
+  }
+  
+  .menuItems ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .menuItems ul li {
+    margin-bottom: 10px;
+  }
+  
+  .menuItems ul li a {
+    color: #333;
+    text-decoration: none;
+  }
+  

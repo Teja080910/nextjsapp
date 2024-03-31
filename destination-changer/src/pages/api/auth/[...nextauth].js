@@ -37,7 +37,6 @@ export const authOptions =
         {
           
           toast.success(res.data.message,{position:"top-right",closeButton:true})
-          // console.log(res.data.data)
         }
         else
         {
@@ -47,18 +46,14 @@ export const authOptions =
             if(res.data.message)
             {
               toast.success(res.data.message,{position:"top-right",closeButton:true})
-              // console.log(res.data.message)
             }
             else if(res.data.data)
             {
-              // pageparam.set("user","teja")
-              // replace(`${pathname}?${pageparam.toString()}`)
               console.log(res.data.data)
             }
             else
             {
               toast.error("Try again")
-              // console.log("Try again");
             }
           })
           .catch((e)=>console.log(e))

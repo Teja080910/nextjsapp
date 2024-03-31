@@ -74,3 +74,44 @@
     @apply bg-background text-foreground;
   }
 }
+
+.menu {
+  position: relative;
+}
+
+.menuButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.icon {
+  display: block;
+  width: 20px;
+  height: 2px;
+  background-color: #333;
+  margin-bottom: 4px;
+}
+
+.menuItems {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: #fff;
+  border: 1px solid #ccc;
+  padding: 10px;
+}
+
+.menuItems ul {
+  list-style: none;
+  padding: 0;
+}
+
+.menuItems ul li {
+  margin-bottom: 10px;
+}
+
+.menuItems ul li a {
+  color: #333;
+  text-decoration: none;
+}
