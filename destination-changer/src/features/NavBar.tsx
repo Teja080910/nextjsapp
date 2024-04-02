@@ -20,7 +20,7 @@ export default function NavBar()
           <main className="flex-1">
             <ShortLink/>
             <Cards/>
-            <SignUp/>
+            <SignUp check={false}/>
           </main>
          <Footer/>
         </div>

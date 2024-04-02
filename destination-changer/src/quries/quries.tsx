@@ -39,6 +39,10 @@ export const AllData = async (mail: any) => {
                     })
                     .catch((e) => console.log(e));
             }
+            else
+            {
+                return null
+            }
         })
         .catch((e) => console.log(e));
 };
