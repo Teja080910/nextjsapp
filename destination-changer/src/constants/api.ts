@@ -16,6 +16,10 @@ export const userlink=`${API}userlinks`
 
 export const signup=`${API}signup`
 
+export const clicklink=`${API}clicklink`
 
+export const allclicks=`${API}allclicks`
 
-// export const signin=`${API1}signin`
+export const deletelink=`${API}deletelink`
+
+// export const signin=`${API}signin`
