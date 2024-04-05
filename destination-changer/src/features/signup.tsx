@@ -1,57 +1,44 @@
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
-  DialogClose,
   DialogContent,
   DialogDescription,
   DialogHeader, DialogTitle,
   DialogTrigger
 } from "@/components/ui/dialog";
+import { faGithub, faGoogle } from "@fortawesome/free-brands-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { signIn, signOut, useSession } from "next-auth/react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
-export const SignUp=({check=false}:{check:boolean})=>
+export const SignUp=({check=false,check1}:{check:boolean,check1:any})=>
 {
     const{data:session}=useSession()
-    const [set,setSet]=useState(check)
-    const [isClient, setIsClient] = useState(false)
-    function XIcon(props:any) {
-      return (
-        <svg
-          {...props}
-          xmlns="http://www.w3.org/2000/svg"
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        >
-          <path d="M18 6 6 18" />
-          <path d="m6 6 12 12" />
-        </svg>
-      )
-  }
+    const [isClient, setIsClient] = useState(true)
     useEffect(() => {
       setIsClient(true)
-    }, [])
+      console.log(check)
+      if(check)
+      {
+        document.getElementById("signin")?.click();
+        check1=false
+      }
+    },[])
+
     const handleSignUp = () =>
     {
       signIn("google")
     };
     return(
-      isClient&&<Dialog open={set} >
-      <DialogTrigger asChild >
-      <section className="w-full py-12 md:py-24 lg:py-32 border-t">
+      isClient&&<Dialog>
+      <DialogTrigger asChild>
+      <section id={check1} className="w-full py-12 md:py-24 lg:py-32 border-t">
         <div className="container grid items-center gap-4 px-4 text-center md:px-6">
           <div className="mx-auto w-full max-w-sm space-y-2">
-
           {
             session?.user?<Button onClick={()=>signOut()} className="">Sign out<span></span></Button>
-            :<Button onClick={()=>setSet(true)} className=""><span>Sign In</span></Button>
+            :<Button id="signin" className=""><span>Sign In</span></Button>
           }
             <p className="text-xs text-gray-500 dark:text-gray-400">
               Sign up to get notified when we launch.
@@ -68,19 +55,16 @@ export const SignUp=({check=false}:{check:boolean})=>
     
         <DialogHeader>
           <DialogTitle className="flex justify-center">Sign In</DialogTitle>
-          <DialogDescription className="flex justify-around pt-5">
-          <div className="absolute top-1 right-1 bg-white ">
-            <Button onClick={()=>setSet(false)} variant="ghost" >
-              <XIcon className="w-4 h-4 indent-1 hover:border-black" />
-            </Button>
+          <DialogDescription>
+          <div  className="flex justify-around pt-5">
+          <Button id="google" onClick={handleSignUp} className="bg-white-600 w-1/2 text-blue-500 text-2xl hover:text-white"><span><FontAwesomeIcon icon={faGoogle} /></span></Button>
+          <Button onClick={()=>{}} className="bg-white-600 w-1/2 text-black text-2xl hover:text-white"><span><FontAwesomeIcon icon={faGithub} /></span></Button>
           </div>
-          <Button onClick={handleSignUp} className="bg-blue-600"><span>Sign in with Google</span></Button>
-          <Button onClick={()=>setSet(true)} className="bg-green-600"><span>Sign up with Google</span></Button>
+          <div className="flex justify-around pt-5">
+          <Button onClick={()=>{}} className="bg-white-600 w-2/3 text-black hover:text-white"><span>Sign up with Email</span></Button>
+          </div>
           </DialogDescription>
         </DialogHeader>
-        <DialogClose className="flex justify-end">
-        <Button onClick={()=>setSet(false)}>close</Button>
-      </DialogClose>
       </DialogContent>
     </Dialog>
         

@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button"
 import { Input, LinkIcon } from "@/components/ui/input"
 import { InsertLink } from "@/quries/quries"
 import { useSession } from "next-auth/react"
+import { useRouter } from "next/navigation"
 import { useState } from "react"
 import { toast } from "sonner"
 import { SignUp } from "./signup"
@@ -11,7 +12,9 @@ export const ShortLink = () => {
   const [loading, setLoading] = useState(false)
   const [check,setCheck]=useState(false)
   const { data: session } = useSession();
+  const router=useRouter()
   const handleShorten = async () => {
+    router.push("#signin")
     setCheck(session?false:true)
     session&&setLoading(true)
     session&&InsertLink(session?.user?.email, url)
@@ -36,11 +39,12 @@ export const ShortLink = () => {
       })
     setUrl("");
   }
-  console.log(check)
+
+  // console.log(check)
   return (
     <section className="w-full py-6 sm:py-12 md:py-24 lg:py-32 xl: p-t-42">
       <div className="hidden">
-      {check&&<SignUp check={true}/>}
+      {check&&<SignUp check={true} check1="#signin"/>}
       </div>
       <div className="container grid items-center gap-6 px-4 md:px-6">
         <div className="space-y-4 text-center">
